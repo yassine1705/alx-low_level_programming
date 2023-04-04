@@ -7,17 +7,26 @@
  *
  * Return: A pointer to the modified string.
  */
-char *cap_string(char *str)
+char *cap_string(char *s)
 {
-    int i;
+	int a = 0, i;
+	int cspc = 13;
+	char spc[] = {32, '\t', '\n', 44, ';', 46, '!', '?', '"', '(', ')', '{', '}'};
 
-    for (i = 0; str[i]; i++)
-    {
-        if (i == 0 || str[i - 1] == ' ' || str[i - 1] == '\t' ||
-            str[i - 1] == '\n' || str[i - 1] == ',' || str[i - 1] == ';' ||
-            str[i - 1] == '.' || str[i - 1] == '!' || str[i - 1] == '?' ||
-            str[i - 1] == '"' || str[i - 1] == '(' || str[i - 1] == ')' ||
-            str[i - 1] == '{' || str[i - 1] == '}')
-        {
-            if (str[i] >= 'a' &&
+	while (s[a])
+	{
+		i = 0;
 
+		while (i < cspc)
+		{
+			if ((a == 0 || s[a - 1] == spc[i]) && (s[a] >= 97 && s[a] <= 122))
+				s[a] -= 32;
+
+			i++;
+		}
+
+		a++;
+	}
+
+	return (s);
+}
