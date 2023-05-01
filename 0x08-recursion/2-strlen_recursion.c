@@ -1,6 +1,5 @@
 /*
  * File: 2-strlen_recursion.c
- 
  */
 
 #include "main.h"
