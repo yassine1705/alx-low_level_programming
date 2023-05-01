@@ -1,21 +1,35 @@
+#include "main.h"
 #include <stdio.h>
 
+/**
+ * _pow_recursion - returns the value of x raised to the power of y.
+ * @x: base
+ * @y: exponent
+ * Return: x raised to the power of y, or -1 if y is negative.
+ */
+int _pow_recursion(int x, int y)
+{
+    if (y < 0)
+    {
+        return (-1);
+    }
+    else if (y == 0)
+    {
+        return (1);
+    }
+    else
+    {
+        return (x * _pow_recursion(x, y - 1));
+    }
+}
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
     int result;
 
-    result = _pow_recursion(2, 3); // 2 raised to the power of 3 is 8
-    printf("%d\n", result); // Output: 8
-
-    result = _pow_recursion(10, 2); // 10 raised to the power of 2 is 100
-    printf("%d\n", result); // Output: 100
-
-    result = _pow_recursion(3, 0); // 3 raised to the power of 0 is 1
-    printf("%d\n", result); // Output: 1
-
-    result = _pow_recursion(2, -2); // y is negative, should return -1
-    printf("%d\n", result); // Output: -1
-
-    return 0;
-}
 
