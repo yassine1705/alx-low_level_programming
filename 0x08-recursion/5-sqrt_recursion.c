@@ -1,36 +1,47 @@
-/**
- * _sqrt_recursion - returns the natural square root of a number.
- * @n: the number to find the square root of.
- *
- * Return: the natural square root of n, or -1 if n doesn't have a natural square root.
+/*
+ * File: 5-sqrt_recursion.c
  */
-int _sqrt_recursion(int n)
+
+#include "main.h"
+
+int find_sqrt(int num, int root);
+int _sqrt_recursion(int n);
+
+/**
+ * find_sqrt - Finds the natural square root of an inputted number.
+ * @num: The number to find the square root of.
+ * @root: The root to be tested.
+ *
+ * Return: If the number has a natural square root - the square root.
+ *         If the number does not have a natural square root - -1.
+ */
+int find_sqrt(int num, int root)
 {
-    if (n < 0)
-        return (-1);
-    if (n == 0 || n == 1)
-        return (n);
-    return (_sqrt_helper(n, 1, n));
+	if ((root * root) == num)
+		return (root);
+
+	if (root == num / 2)
+		return (-1);
+
+	return (find_sqrt(num, root + 1));
 }
 
 /**
- * _sqrt_helper - returns the natural square root of a number.
- * @n: the number to find the square root of.
- * @low: the lower bound of the square root range.
- * @high: the upper bound of the square root range.
+ * _sqrt_recursion - Returns the natural square root of a number.
+ * @n: The number to return the square root of.
  *
- * Return: the natural square root of n within the given range, or -1 if not found.
+ * Return: If n has a natural square root - the natural square root of n.
+ *         If n does not have a natural square root - -1.
  */
-int _sqrt_helper(int n, int low, int high)
+int _sqrt_recursion(int n)
 {
-    int mid;
+	int root = 0;
 
-    if (high < low)
-        return (-1);
-    mid = (low + high) / 2;
-    if (mid * mid == n)
-        return (mid);
-    if (mid * mid > n)
-        return (_sqrt_helper(n, low, mid - 1));
-    return (_sqrt_helper(n, mid + 1, high));
+	if (n < 0)
+		return (-1);
+
+	if (n == 1)
+		return (1);
+
+	return (find_sqrt(n, root));
 }
