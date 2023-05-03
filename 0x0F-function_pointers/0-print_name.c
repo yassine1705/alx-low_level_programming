@@ -2,7 +2,7 @@
 
 /**
   * print_name - Prints a name
-  *
+  * @name : yassine el
   * Return: Nothing
   */
 void print_name(char *name, void (*f)(char *))
